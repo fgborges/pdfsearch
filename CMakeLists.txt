@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.1)
+project(pdf_search, CXX)
+add_executable(pdfsearch main.cpp)
+find_package(PkgConfig)
+pkg_check_modules(POPPLER REQUIRED poppler-cpp)
+include_directories(${POPPLER_INCLUDE_DIRS})
+target_link_libraries(pdfsearch ${POPPLER_LIBRARIES})
