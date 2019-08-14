@@ -11,7 +11,7 @@ struct Item {
     std::string line;
 };
 
-std::list<Item> pdf_search(std::string query, std::string path) {
+std::list<Item> pdfsearch(std::string query, std::string path) {
     std::list<Item> items;
     poppler::ustring uquery(poppler::ustring::from_latin1(query));
     std::unique_ptr<poppler::document> document(poppler::document::load_from_file(path, "", ""));
@@ -35,7 +35,7 @@ std::list<Item> pdf_search(std::string query, std::string path) {
 
 int main(int argc, char** argv) {
     for(int i = 2; i < argc; i++){
-        for(Item item : pdf_search(std::string(argv[1]), std::string(argv[i]))) {
+        for(Item item : pdfsearch(std::string(argv[1]), std::string(argv[i]))) {
             std::cout << item.path << ":" << item.index << ":" << item.line << std::endl;
         }
     }
